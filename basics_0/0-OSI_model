@@ -1,0 +1,2 @@
+What is the OSI model? The answer is 2, a conceptual model that works without regard to the underlying internal structure and technology. Option 3 is the trap: it says the opposite ("strong regard"). Option 1 is wrong because the OSI model isn't a rulebook that hardware makers have to follow.
+How is the OSI model organized? The answer is 2, from the lowest to the highest level. That means layer 1 (Physical) up to layer 7 (Application).
