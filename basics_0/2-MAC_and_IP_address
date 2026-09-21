@@ -1,0 +1,2 @@
+What is a MAC address? It's the unique identifier of a network interface (2). The manufacturer assigns it to the network card, and it doesn't change. It isn't the interface itself or its name, like eth0.
+What is an IP address? It's to devices on a network what a postal address is to houses (1). It tells the network where to deliver data. Option 2 describes the MAC address. Option 3 is wrong because an IP address isn't what a device uses to connect: the device receives one once it's on a network.
