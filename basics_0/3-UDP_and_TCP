@@ -1,0 +1,3 @@
+TCP box is answer 1: slow but sure. TCP is connection-oriented and retransmits anything that goes missing, so delivery is guaranteed at the cost of speed.
+UDP box is answer 2: fast, and data may be lost. UDP just sends without acknowledgements, which suits streaming and games.
+TCP worker is answer 1: "Have you received boxes x, y, z?" That's the acknowledgement TCP waits for on every segment. The other line is about flow rate, which isn't what makes TCP reliable.
