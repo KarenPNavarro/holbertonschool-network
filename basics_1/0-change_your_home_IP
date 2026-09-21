@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 # makes localhost resolve to 127.0.0.2 and facebook.com resolve to 8.8.8.8
-sed -i '/[[:space:]]localhost/d;/[[:space:]]facebook\.com/d' /etc/hosts
-echo -e "127.0.0.2\tlocalhost" >> /etc/hosts
-echo -e "8.8.8.8\tfacebook.com" >> /etc/hosts
+# /etc/hosts is a bind mount in containers, so it is rewritten in place
+# rather than replaced: sed -i would fail to rename over the mount
+hosts=$(sed '/[[:space:]]localhost/d;/[[:space:]]facebook\.com/d' /etc/hosts)
+{
+	echo "$hosts"
+	echo -e "127.0.0.2\tlocalhost"
+	echo -e "8.8.8.8\tfacebook.com"
+} > /etc/hosts
