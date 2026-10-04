@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 840" width="1400" height="840" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="arrowBack" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="arrowAccent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"/>
+    </marker>
+  </defs>
+
+  <rect width="1400" height="840" fill="#ffffff"/>
+
+  <text x="40" y="52" font-size="27" font-weight="700" fill="#0f172a">What happens when you type https://www.google.com</text>
+  <text x="40" y="82" font-size="17" fill="#64748b">The path of a single request, from keystroke to rendered page</text>
+
+  <!-- ===== STEP 1: DNS ===== -->
+  <g>
+    <rect x="40" y="120" width="430" height="190" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="5 4"/>
+    <text x="60" y="150" font-size="15" font-weight="700" fill="#0f172a">1 · DNS resolution</text>
+    <text x="60" y="172" font-size="13" fill="#64748b">name → IP address, nearest cache first</text>
+
+    <rect x="60" y="188" width="180" height="40" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="150" y="213" font-size="13" fill="#334155" text-anchor="middle">browser / OS cache · hosts</text>
+
+    <rect x="60" y="244" width="180" height="40" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="150" y="269" font-size="13" fill="#334155" text-anchor="middle">resolver (ISP · 8.8.8.8)</text>
+
+    <path d="M 248 264 L 282 264" stroke="#475569" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+    <rect x="290" y="186" width="160" height="34" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="370" y="208" font-size="13" fill="#334155" text-anchor="middle">root server</text>
+    <rect x="290" y="228" width="160" height="34" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="370" y="250" font-size="13" fill="#334155" text-anchor="middle">.com TLD server</text>
+    <rect x="290" y="270" width="160" height="34" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="370" y="292" font-size="13" fill="#334155" text-anchor="middle">authoritative NS</text>
+  </g>
+
+  <!-- browser -->
+  <rect x="40" y="420" width="190" height="96" rx="10" fill="#1e293b"/>
+  <text x="135" y="455" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">Your browser</text>
+  <text x="135" y="478" font-size="12.5" fill="#cbd5e1" text-anchor="middle">https://www.google.com</text>
+  <text x="135" y="499" font-size="12.5" fill="#cbd5e1" text-anchor="middle">⏎ Enter</text>
+
+  <!-- browser <-> DNS -->
+  <path d="M 135 414 L 135 320" stroke="#475569" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="148" y="360" font-size="12.5" fill="#475569">asks</text>
+  <path d="M 196 320 L 196 414" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrowBack)"/>
+  <text x="208" y="360" font-size="12.5" fill="#64748b">142.250.80.100</text>
+
+  <!-- ===== STEP 2: encrypted TCP connection ===== -->
+  <g>
+    <rect x="258" y="398" width="300" height="140" rx="10" fill="#ecfdf5" stroke="#0f766e" stroke-width="1.5"/>
+    <text x="408" y="428" font-size="15" font-weight="700" fill="#0f766e" text-anchor="middle">2 · TCP/IP + TLS</text>
+    <text x="408" y="452" font-size="13" fill="#115e59" text-anchor="middle">3-way handshake: SYN · SYN-ACK · ACK</text>
+    <text x="408" y="474" font-size="13" fill="#115e59" text-anchor="middle">server IP on port 443</text>
+    <text x="408" y="504" font-size="13" font-weight="700" fill="#0f766e" text-anchor="middle">🔒 encrypted tunnel</text>
+    <text x="408" y="524" font-size="12" fill="#115e59" text-anchor="middle">certificate verified · all traffic ciphered</text>
+  </g>
+  <path d="M 232 468 L 252 468" stroke="#0f766e" stroke-width="2" marker-end="url(#arrowAccent)"/>
+  <path d="M 560 468 L 600 468" stroke="#0f766e" stroke-width="2" marker-end="url(#arrowAccent)"/>
+
+  <!-- ===== STEP 3: firewall ===== -->
+  <g>
+    <rect x="606" y="398" width="118" height="140" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+    <text x="665" y="432" font-size="15" font-weight="700" fill="#b91c1c" text-anchor="middle">3 · Firewall</text>
+    <text x="665" y="462" font-size="12.5" fill="#7f1d1d" text-anchor="middle">allows 443</text>
+    <text x="665" y="482" font-size="12.5" fill="#7f1d1d" text-anchor="middle">drops the rest</text>
+    <text x="665" y="510" font-size="22" fill="#b91c1c" text-anchor="middle">🧱</text>
+  </g>
+  <path d="M 726 468 L 766 468" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ===== STEP 4: load balancer ===== -->
+  <g>
+    <rect x="772" y="398" width="160" height="140" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+    <text x="852" y="432" font-size="15" font-weight="700" fill="#1d4ed8" text-anchor="middle">4 · Load balancer</text>
+    <text x="852" y="460" font-size="12.5" fill="#1e3a8a" text-anchor="middle">round-robin</text>
+    <text x="852" y="480" font-size="12.5" fill="#1e3a8a" text-anchor="middle">least-connections</text>
+    <text x="852" y="508" font-size="12.5" fill="#1e3a8a" text-anchor="middle">health checks ✓</text>
+  </g>
+
+  <!-- LB fans out to servers -->
+  <path d="M 934 440 C 975 440 975 300 1000 300" stroke="#94a3b8" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 934 468 L 1000 468" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 934 496 C 975 496 975 636 1000 636" stroke="#94a3b8" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- ===== STEP 5: web servers ===== -->
+  <rect x="1006" y="264" width="180" height="72" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="1096" y="292" font-size="13.5" fill="#64748b" text-anchor="middle">Web server</text>
+  <text x="1096" y="313" font-size="12" fill="#94a3b8" text-anchor="middle">server 1</text>
+
+  <rect x="1006" y="600" width="180" height="72" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="1096" y="628" font-size="13.5" fill="#64748b" text-anchor="middle">Web server</text>
+  <text x="1096" y="649" font-size="12" fill="#94a3b8" text-anchor="middle">server 3</text>
+
+  <g>
+    <rect x="1006" y="420" width="180" height="96" rx="10" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <text x="1096" y="450" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">5 · Web server</text>
+    <text x="1096" y="473" font-size="12.5" fill="#475569" text-anchor="middle">Nginx / Apache</text>
+    <text x="1096" y="495" font-size="12.5" fill="#475569" text-anchor="middle">serves the web page</text>
+  </g>
+
+  <!-- ===== STEP 6: app server ===== -->
+  <path d="M 1096 414 L 1096 376" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="1108" y="399" font-size="12" fill="#475569">dynamic</text>
+
+  <g>
+    <rect x="1210" y="420" width="150" height="96" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+    <text x="1285" y="450" font-size="14.5" font-weight="700" fill="#b45309" text-anchor="middle">6 · App server</text>
+    <text x="1285" y="473" font-size="12.5" fill="#92400e" text-anchor="middle">runs the code,</text>
+    <text x="1285" y="493" font-size="12.5" fill="#92400e" text-anchor="middle">generates the page</text>
+  </g>
+  <path d="M 1192 460 L 1204 460" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 1204 494 L 1192 494" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#arrowBack)"/>
+
+  <!-- ===== STEP 7: database ===== -->
+  <g>
+    <rect x="1210" y="620" width="150" height="90" rx="10" fill="#faf5ff" stroke="#7e22ce" stroke-width="1.5"/>
+    <ellipse cx="1285" cy="651" rx="30" ry="9" fill="none" stroke="#7e22ce" stroke-width="1.4"/>
+    <path d="M 1255 651 L 1255 671 A 30 9 0 0 0 1315 671 L 1315 651" fill="none" stroke="#7e22ce" stroke-width="1.4"/>
+    <text x="1285" y="698" font-size="14" font-weight="700" fill="#7e22ce" text-anchor="middle">7 · Database</text>
+  </g>
+  <path d="M 1272 522 L 1272 614" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="1130" y="560" font-size="12" fill="#475569">query</text>
+  <path d="M 1300 614 L 1300 522" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#arrowBack)"/>
+  <text x="1312" y="580" font-size="12" fill="#64748b">data</text>
+
+  <!-- ===== response path ===== -->
+  <path d="M 1096 522 C 1096 760 400 760 135 760 L 135 526" stroke="#94a3b8" stroke-width="2" fill="none" stroke-dasharray="7 5" marker-end="url(#arrowBack)"/>
+  <text x="620" y="752" font-size="13" fill="#64748b" text-anchor="middle">HTML, CSS, JS travel back through the same encrypted tunnel — the browser parses the DOM and paints the page</text>
+
+  <text x="40" y="812" font-size="12.5" fill="#94a3b8">Solid arrows: the request. Dashed and grey: the response.</text>
+</svg>
